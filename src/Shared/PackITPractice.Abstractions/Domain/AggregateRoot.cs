@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PackITPractice.Abstractions.Domain
+﻿namespace PackITPractice.Abstractions.Domain
 {
-    internal class AggregateRoot
+    public abstract class AggregateRoot<T>
     {
+        public T id { get; protected set; }
+        public int Version { get; protected set; }
+
+        public bool incrementVersion;
+
+        public AggregateRoot()
+        {
+            if (incrementVersion)
+                return;
+
+            Version++;
+            incrementVersion = true;
+        }
     }
 }

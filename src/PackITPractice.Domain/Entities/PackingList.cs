@@ -1,11 +1,12 @@
-﻿using PackITPractice.Domain.Exceptions;
+﻿using PackITPractice.Abstractions.Domain;
+using PackITPractice.Domain.Exceptions;
 using PackITPractice.Domain.ValueObjects;
 
 namespace PackITPractice.Domain.Entities
 {
-    public class PackingList
+    public class PackingList : AggregateRoot<PackingListId>
     {
-        public Guid Id { get; private set; }
+        public PackingListId Id { get; private set; }
           
         private PackingListName name;
         private Localization localization;
